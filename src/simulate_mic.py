@@ -1,5 +1,4 @@
 import wave
-import numpy as np
 import sounddevice as sd
 import scipy.io.wavfile as wav
 import sys
