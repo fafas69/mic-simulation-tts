@@ -21,9 +21,11 @@ class PyPiper():
         file.close()
         print(len(voice_main))
         self.key_list=list(voice_main.keys())
-        self.model="en_US-ryan-low"
+        self.model="en_US-ryan-medium"
 
-    def load_mod(self, instr="en_US-ryan-low"):
+        self.load_mod(instr=self.model)
+
+    def load_mod(self, instr="en_US-ryan-medium"):
         self.model=instr
         lang=instr.split("_")[0]
         dia=instr.split("-")[0]
@@ -47,10 +49,9 @@ class PyPiper():
         self.json_ob=f'{os.getcwd()}/voices/{file}.json'
         print("Model Loaded")
     
-    def tts(self, in_text, output_file, model="",length=1.7,noise=0.1,width=1,sen_pause=1):
+    def tts(self, in_text, output_file, model="",length=2,noise=0.1,width=1,sen_pause=1):
         if not model:
             model=self.model
-        self.load_mod(instr=model)
         text = in_text.replace(". ",".\n")
         model_path=f'{os.getcwd()}/voices/{model}.onnx'
         json_path=f'{os.getcwd()}/voices/{model}.onnx.json'
